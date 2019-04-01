@@ -2,8 +2,8 @@ public abstract class World {
     private int generation;
     private Pattern pattern;
     
-    public World(){
-
+    public World(String format){
+        pattern = new Pattern(format);
     }
     public int getWidth(){
         return pattern.getWidth();
@@ -20,7 +20,7 @@ public abstract class World {
     protected Pattern getPattern(){
         return pattern;
     }
-    protected countNeighbours(int col, int row){
+    protected int countNeighbours(int col, int row){
         int counter = 0;
         for(int i=row-1;i<row-1+3;i++){
             for(int j=col-1;j<col-1+3;j++){

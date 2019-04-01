@@ -2,12 +2,12 @@ import java.util.Scanner;
 public class GameOfLife{
     private World world;
 
-    public GameOfLife(){
-
+    public GameOfLife(World w){
+        world = w;
     } 
     public void print(){
-        for(int i=0; i<height; i++){
-            for(int j=0; j<width; j++){
+        for(int i=0; i<world.getPattern().getHeight(); i++){
+            for(int j=0; j<world.getPattern().getWidth(); j++){
                 if(world.getCell(j, i)){
                     System.out.print("#");
                 }
@@ -18,7 +18,7 @@ public class GameOfLife{
             System.out.println();
         }
     }
-    public void play(){
+    public void play(){ // IOException
         Scanner myObj = new Scanner(System.in);   
         print();  
         String continueGame;   
@@ -37,6 +37,14 @@ public class GameOfLife{
         }
     }
     public static void main(String[] args){
-
+        World w=null;
+        if(args[0].substring(2).equals("array")){
+            w = new ArrayWorld(args[1]);
+        }
+        else if(args[0].substring(2).equals("packed")){
+            w = new PackedWorld(args[1]);
+        }
+        GameOfLife gol = new GameOfLife(w);
+        gol.play();
     }
 }

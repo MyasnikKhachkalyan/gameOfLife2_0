@@ -62,6 +62,6 @@ public class Pattern{
     }
 
     public String getCells(){
-        return pattern;
+        return cells;
     }
 }
