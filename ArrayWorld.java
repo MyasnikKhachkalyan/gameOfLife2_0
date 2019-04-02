@@ -1,7 +1,7 @@
 public class ArrayWorld extends World {
     private boolean[][] world;
     
-    public ArrayWorld(String serial) {
+    public ArrayWorld(String serial) throws Exception {
     super(serial);
     world = new boolean[getPattern().getHeight()][getPattern().getWidth()];
     getPattern().initialise(this);

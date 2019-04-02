@@ -2,7 +2,7 @@ public abstract class World {
     private int generation;
     private Pattern pattern;
     
-    public World(String format){
+    public World(String format) throws Exception{
         pattern = new Pattern(format);
     }
     public int getWidth(){
