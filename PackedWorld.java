@@ -1,7 +1,7 @@
 public class PackedWorld extends World {
     private long world;
     
-    public PackedWorld (String serial) throws Exception{
+    public PackedWorld (Pattern serial) throws Exception{
     super(serial);
     world = 0l;
     if(getPattern().getHeight()>8 || getPattern().getWidth()>8){

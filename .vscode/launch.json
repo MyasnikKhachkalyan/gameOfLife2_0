@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - GameOfLife",
+            "request": "launch",
+            "mainClass": "GameOfLife",
+            "projectName": "gameOfLife2_0_62b7dea7"
+        }
+    ]
+}

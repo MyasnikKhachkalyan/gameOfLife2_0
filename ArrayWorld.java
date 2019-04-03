@@ -1,7 +1,7 @@
 public class ArrayWorld extends World {
     private boolean[][] world;
     
-    public ArrayWorld(String serial) throws Exception {
+    public ArrayWorld(Pattern serial) throws Exception {
     super(serial);
     world = new boolean[getPattern().getHeight()][getPattern().getWidth()];
     getPattern().initialise(this);
@@ -40,8 +40,5 @@ public class ArrayWorld extends World {
             }
         }
     }
-    // public static void main(String args[]) throws Exception {
-    //     ArrayWorld pl = new ArrayWorld(args[0]);
-    //     pl.play();
-    //     }
+
 }
