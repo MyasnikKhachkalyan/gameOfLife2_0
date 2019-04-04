@@ -1,9 +1,8 @@
-import java.io.*;
 
 public class ArrayWorld extends World {
     private boolean[][] world;
     
-    public ArrayWorld(Pattern serial) throws IOException {
+    public ArrayWorld(Pattern serial) throws Exception {
     super(serial);
     world = new boolean[getPattern().getHeight()][getPattern().getWidth()];
     getPattern().initialise(this);

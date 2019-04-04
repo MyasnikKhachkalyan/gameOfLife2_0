@@ -3,7 +3,7 @@ import java.io.*;
 public class PackedWorld extends World {
     private long world;
     
-    public PackedWorld (Pattern serial) throws IOException{
+    public PackedWorld (Pattern serial) throws Exception{
     super(serial);
     world = 0l;
     if(getPattern().getHeight()>8 || getPattern().getWidth()>8){

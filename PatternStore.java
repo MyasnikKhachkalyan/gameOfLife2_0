@@ -7,7 +7,7 @@ public class PatternStore {
     private Pattern[] patterns = new Pattern[MAX_NUMBER_PATTERNS];
     private int numberUsed = 0;
 
-    public PatternStore(String source) throws IOException {
+    public PatternStore(String source) throws Exception {
     if (source.startsWith("http://") || source.startsWith("https://")) {
         loadFromURL(source);
     }
@@ -16,42 +16,32 @@ public class PatternStore {
     }
 
     }
-    public PatternStore(Reader source) throws IOException {
+    public PatternStore(Reader source) throws Exception {
         load(source);
     }
 
-    private void load(Reader r) throws IOException {
+    private void load(Reader r) throws Exception {
         BufferedReader b = new BufferedReader(r);
         String line;
         while ( (line = b.readLine()) != null) {
-            patterns[numberUsed] = new Pattern(line);
-            numberUsed++;
+            if(new Pattern(line) != null){
+                patterns[numberUsed] = new Pattern(line);
+                numberUsed++;
+            }
         }
         b.close();
     }
 
-    private void loadFromURL(String url) throws IOException {
+    private void loadFromURL(String url) throws Exception {
         URL destination = new URL(url);
         URLConnection conn = destination.openConnection();
         Reader r = new InputStreamReader(conn.getInputStream());
-        BufferedReader b = new BufferedReader(r);
-        String line;
-        while ( (line = b.readLine()) != null) {
-            patterns[numberUsed] = new Pattern(line);
-            numberUsed++;
-        }
-        b.close();
+        load(r);
     }
 
-    private void loadFromDisk(String filename) throws IOException {
+    private void loadFromDisk(String filename) throws Exception {
         Reader r = new FileReader(filename);
-        BufferedReader b = new BufferedReader(r);
-        String line;
-        while ( (line = b.readLine()) != null) {
-            patterns[numberUsed] = new Pattern(line);
-            numberUsed++;
-        }
-        b.close();
+        load(r);
     }
     public Pattern[] getPatterns() {
         Pattern[] patternsIm = new Pattern[numberUsed];

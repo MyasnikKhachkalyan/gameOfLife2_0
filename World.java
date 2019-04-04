@@ -4,7 +4,7 @@ public abstract class World {
     private int generation;
     private Pattern pattern;
     
-    public World(Pattern format) throws IOException{
+    public World(Pattern format) throws Exception{
         pattern = format;
     }
     public int getWidth(){

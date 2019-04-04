@@ -1,4 +1,3 @@
-import java.io.*;
 
 public class Pattern{
     private String name;
@@ -9,45 +8,37 @@ public class Pattern{
     private int startUpperRow;
     private String cells;
 
-    public Pattern(String initialiser) throws IOException{
+    public Pattern(String initialiser) throws Exception{
         String[] arr = initialiser.split(":");
-        if(arr.length==1){
-            throw new PatternFormatException("Invalid pattern format: Incorrect number of fields in pattern(found 1).");
+        if(arr.length!=7){
+            throw new PatternFormatException(arr.length);
         }
-        else if(arr.length!=7){
-            throw new PatternFormatException("Invalid pattern format: Incorrect number of fields in pattern(found 5).");
-        }
-
+        
         name = arr[0];
         author = arr[1];
+        String err = "", errorName = "";
         try{
+            err  = arr[2];
+            errorName = "width";
             width = Integer.parseInt(arr[2]);
-        }
-        catch(Exception e){
-            throw new PatternFormatException("Invalid pattern format: Could not interpret the width field as a number (’" + arr[2] +"’ given).");
-        }
-        try{
+            err  = arr[3];
+            errorName = "height";
             height = Integer.parseInt(arr[3]);
-        }
-        catch(Exception e){
-            throw new PatternFormatException("Invalid pattern format: Could not interpret the width field as a number (’" + arr[3] +"’ given).");
-        }
-        try{
+            err = arr[4];
+            errorName = "StartX";
             startUpperCol = Integer.parseInt(arr[4]);
-        }
-        catch(Exception e){
-            throw new PatternFormatException("Invalid pattern format: Could not interpret the startX field as a number (’" + arr[4]+"’ given).");
-        }
-        try{
+            err = arr[5];
+            errorName = "StartY";
             startUpperRow = Integer.parseInt(arr[5]);
         }
         catch(Exception e){
-            throw new PatternFormatException("Invalid pattern format: Could not interpret the startY field as a number (’" + arr[5]+"’ given).");
+            throw new PatternFormatException(err, errorName);
+
         }
         
         for(int i = 0; i<arr[6].length(); i++){
             if(arr[6].charAt(i)!= '0' && arr[6].charAt(i)!= '1' && arr[6].charAt(i)!= ' '){
-                throw new PatternFormatException("Invalid pattern format: Malformed pattern ’" + arr[6] + "’.");
+                throw new PatternFormatException(arr[6], "Malformed pattern");
             }
         }
         cells = arr[6];
