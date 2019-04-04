@@ -1,3 +1,5 @@
+import java.io.*;
+
 public class Pattern{
     private String name;
     private String author;
@@ -7,7 +9,7 @@ public class Pattern{
     private int startUpperRow;
     private String cells;
 
-    public Pattern(String initialiser) throws Exception{
+    public Pattern(String initialiser) throws IOException{
         String[] arr = initialiser.split(":");
         if(arr.length==1){
             throw new PatternFormatException("Invalid pattern format: Incorrect number of fields in pattern(found 1).");

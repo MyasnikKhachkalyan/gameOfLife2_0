@@ -22,7 +22,7 @@ public class GameOfLife{
             System.out.println();
         }
     }
-    public void play() throws Exception {
+    public void play() throws IOException {
         String response = "";
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Please select a pattern to play (l to list):");
@@ -60,7 +60,7 @@ public class GameOfLife{
             }
         }
     }
-    public static void main(String args[]) throws Exception {
+    public static void main(String args[]) throws IOException {
         if (args.length != 1) {
             System.out.println("Usage: java GameOfLife <path/url to store>");
             return;

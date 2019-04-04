@@ -1,4 +1,7 @@
-public class PatternFormatException extends Exception{
+import java.io.*;
+
+
+public class PatternFormatException extends IOException{
 		
     public PatternFormatException(){
             

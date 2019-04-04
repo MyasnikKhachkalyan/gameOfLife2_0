@@ -1,11 +1,13 @@
+import java.io.*;
+
 public class PackedWorld extends World {
     private long world;
     
-    public PackedWorld (Pattern serial) throws Exception{
+    public PackedWorld (Pattern serial) throws IOException{
     super(serial);
     world = 0l;
     if(getPattern().getHeight()>8 || getPattern().getWidth()>8){
-        throw new Exception("given height or width cannot be used when constracting world using type long!!!");
+        throw new IOException("given height or width cannot be used when constracting world using type long!!!");
     }
     getPattern().initialise(this);
     }

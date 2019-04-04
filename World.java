@@ -1,8 +1,10 @@
+import java.io.*;
+
 public abstract class World {
     private int generation;
     private Pattern pattern;
     
-    public World(Pattern format) throws Exception{
+    public World(Pattern format) throws IOException{
         pattern = format;
     }
     public int getWidth(){
@@ -65,3 +67,8 @@ public abstract class World {
 
 
     }
+
+    // ////// in the first part
+    /// GameOfLife has a world which has a pattern
+    /// Arrayworld  is a world and Packedworld is a world,
+    /// the same method with the same heading are in the world and in arrayworld and packedworld as well, this means that we are dealing with abstract mehtods.
